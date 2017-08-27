@@ -1,8 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Arrow from './icons/arrow.svg';
-import Plus from './icons/plus.svg';
+import ArrowIcon from './icons/arrow.svg';
+import PlusIcon from './icons/plus.svg';
+import SubmitIcon from './icons/submit.svg';
+import SmileyIcon from './icons/smiley.svg';
 
 class Messenger extends React.Component {
   constructor(props) {
@@ -26,7 +28,7 @@ class Messenger extends React.Component {
           <header className="messenger__header">
             <div className="messenger__header__top">
               <div className="messenger__header__back-icon">
-                <img src={Arrow} alt="back" />
+                <img src={ArrowIcon} alt="back" />
               </div>
               <h1 className="messenger__header__group-title">
                 Julia's Groupchate
@@ -46,7 +48,7 @@ class Messenger extends React.Component {
               />,
             )}
             <div className="messenger__members__add-member">
-              <img src={Plus} alt="add member" />
+              <img src={PlusIcon} alt="add member" />
             </div>
           </div>
 
@@ -88,18 +90,24 @@ class Messenger extends React.Component {
 
           <div className="messenger__action-bar">
             <div className="messenger__action-bar-wrapper">
-              <input
-                ref={inputField => (this.inputField = inputField)}
-                className="messenger__action-bar__input"
-                type="text"
-                title="Message"
-              />
+              <div className="messenger__action-bar__input-wrapper">
+                <input
+                  ref={inputField => (this.inputField = inputField)}
+                  className="messenger__action-bar__input"
+                  type="text"
+                  title="Message"
+                />
+                <img
+                  src={SmileyIcon}
+                  className="messenger__action-bar__smiley-btn"
+                />
+              </div>
               <button
                 onClick={this.sendMessage.bind(this)}
                 className="messenger__action-bar__btn btn btn--primary"
                 type="button"
               >
-                Send
+                <img src={SubmitIcon} />
               </button>
             </div>
           </div>

@@ -57,7 +57,7 @@
 
 .messenger__members__add-member {
   position: absolute;
-  transform: translateX(8em);
+  transform: translateX(12.5rem);
   display: flex;
   height: 32px;
 }
@@ -150,10 +150,28 @@
   display: flex;
 }
 
+.messenger__action-bar__input-wrapper {
+  background: #edf1f5;
+  border-radius: 22px;
+  display: flex;
+  padding: .5rem;
+}
+
 .messenger__action-bar__input {
   flex: 1 1 auto;
   margin-right: 1rem;
+  border: none;
+  background-color: transparent;
+  padding-left: 1rem;
+  width: 100%;
 }
 
 .messenger__action-bar__btn {
+  border: none;
+  background: white;
+}
+.messenger__action-bar__smiley-btn {
+  background-color: white;
+  padding: 8px;
+  border-radius: 50%;
 }
