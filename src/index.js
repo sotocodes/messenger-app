@@ -3,10 +3,6 @@ import { render } from 'react-dom';
 
 import Arrow from './icons/arrow.svg';
 import Plus from './icons/plus.svg';
-import User1 from './users/1.jpg';
-import User2 from './users/2.jpg';
-import User3 from './users/3.jpg';
-import User4 from './users/4.jpg';
 
 class Messenger extends React.Component {
   constructor(props) {
@@ -40,26 +36,15 @@ class Messenger extends React.Component {
           </header>
 
           <div className="messenger__members">
-            <img
-              className="messenger__members__photo messenger__members__photo--blue"
-              src={User1}
-              alt=""
-            />
-            <img
-              className="messenger__members__photo messenger__members__photo--gold"
-              src={User2}
-              alt=""
-            />
-            <img
-              className="messenger__members__photo messenger__members__photo--pink"
-              src={User3}
-              alt=""
-            />
-            <img
-              className="messenger__members__photo messenger__members__photo--gray"
-              src={User4}
-              alt=""
-            />
+            {this.state.messages.map(msg =>
+              <img
+                key={msg.id}
+                src={`./users/${this.userId(msg)}.jpg`}
+                className={`messenger__members__photo messenger__members__photo--${this.userId(
+                  msg,
+                )}`}
+              />,
+            )}
             <div className="messenger__members__add-member">
               <img src={Plus} alt="add member" />
             </div>
@@ -69,16 +54,32 @@ class Messenger extends React.Component {
             <div className="messenger__message-list__wrapper">
               {this.state.messages.map(msg =>
                 <div key={msg.id} className="messenger__message-list__item">
-                  <div>
-                    <span>
-                      {msg.user.name}
-                    </span>
-                    <span>
-                      {msg.sentAt}
-                    </span>
-                  </div>
-                  <div>
-                    {msg.text}
+                  <div style={{ display: 'flex' }}>
+                    <div>
+                      <img
+                        src={`./users/${this.userId(msg)}.jpg`}
+                        className={`messenger__members__photo messenger__members__photo--${this.userId(
+                          msg,
+                        )}`}
+                      />
+                    </div>
+                    <div
+                      className={`messenger__message-list__item-text messenger__message-list__item-text--${this.userId(
+                        msg,
+                      )}`}
+                    >
+                      <div className="messenger__message-list__item__info">
+                        <span>
+                          {msg.user.name}
+                        </span>
+                        <span>
+                          {this.milisecondsToHHMM(msg.sentAt)}
+                        </span>
+                      </div>
+                      <div className="messenger__message-list__item__msg">
+                        {msg.text}
+                      </div>
+                    </div>
                   </div>
                 </div>,
               )}
@@ -138,6 +139,28 @@ class Messenger extends React.Component {
           messages: json.data.messages,
         }),
       );
+  }
+
+  milisecondsToHHMM(miliseconds) {
+    let date = new Date(miliseconds);
+    let hh = date.getUTCHours();
+    let mm = date.getUTCMinutes();
+    let dayOrNight = 'am';
+
+    if (hh > 12) {
+      hh = hh % 12;
+      dayOrNight = 'pm';
+    }
+    // These lines ensure you have two-digits
+    if (hh < 10) hh = `0${hh}`;
+    if (mm < 10) mm = `0${mm}`;
+
+    return `${hh}:${mm} ${dayOrNight}`;
+  }
+
+  userId(msg) {
+    if (msg.user.name.toLowerCase() === 'you') return 'you';
+    else return msg.user.id;
   }
 }
 

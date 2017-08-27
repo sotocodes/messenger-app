@@ -30,7 +30,6 @@
 }
 
 .messenger__header__group-title {
-  font-size: 1.3em;
   font-weight: 600;
   flex-grow: 1;
 }
@@ -70,22 +69,19 @@
   margin-left: 4px;
   margin-right: 4px;
   height: 32px;
+  width: 32px;
 }
 
-.messenger__members__photo--blue {
+.messenger__members__photo--1 {
   border-color: #31ade4;
 }
 
-.messenger__members__photo--gold {
+.messenger__members__photo--2 {
   border-color: #dea43e;
 }
 
-.messenger__members__photo--pink {
-  border-color: #fc00ff;
-}
-
-.messenger__members__photo--gray {
-  border-color: #edf1f5;
+.messenger__members__photo--you {
+  display: none;
 }
 
 .messenger__message-list {
@@ -95,14 +91,55 @@
 }
 
 .messenger__message-list__wrapper {
-  padding: 3rem 0 0 1.4rem;
+  padding: 3rem 1.4rem 0 1.4rem;
   display: flex;
   flex-flow: row wrap;
   align-content: flex-end;
 }
 
 .messenger__message-list__item {
+  width: 100%;
   margin-bottom: 3rem;
+}
+
+.messenger__message-list__item-text {
+  width: 100%;
+  padding: 1rem;
+  margin-left: .5rem;
+  border-radius: 10px;
+}
+
+.messenger__message-list__item-text--1 {
+  background-color: #31ade4;
+  color: white;
+}
+
+.messenger__message-list__item-text--2 {
+  background-color: #dea43e;
+  color: white;
+}
+
+.messenger__message-list__item-text--you {
+  background-color: white;
+  color: black;
+  margin-left: 44px;
+}
+
+.messenger__message-list__item__info {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: .5rem;
+}
+
+.messenger__message-list__item__msg {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.messenger__message-list__item__icon {
 }
 
 .messenger__action-bar {

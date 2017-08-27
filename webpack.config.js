@@ -16,7 +16,7 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.(svg|jpg)$/,
+        test: /\.svg$/,
         loader: 'url-loader',
       },
     ],
@@ -31,6 +31,7 @@ module.exports = {
       { from: './src/css', to: 'css/' },
       { from: './src/messenger', to: 'messenger/' },
       { from: './src/sidebar', to: 'sidebar' },
+      { from: './src/users', to: 'users' },
     ]),
   ],
 };
