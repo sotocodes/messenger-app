@@ -2,6 +2,24 @@ import React from 'react';
 import { render } from 'react-dom';
 
 class Messenger extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      messages: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('https://new.visit-x.net/rest/v1/recruiting/messenger/channel/1234')
+      .then(res => res.json())
+      .then(json =>
+        this.setState({
+          messages: json.data.messages,
+        }),
+      );
+  }
+
   render() {
     return (
       <div className="messenger">
@@ -12,15 +30,21 @@ class Messenger extends React.Component {
 
           <div className="messenger__message-list">
             <div className="messenger__message-list__wrapper">
-              <div className="messenger__message-list__item">
-                <img src="messenger/message-dummy-1.png" alt="Dummy 1" />
-              </div>
-              <div className="messenger__message-list__item">
-                <img src="messenger/message-dummy-2.png" alt="Dummy 2" />
-              </div>
-              <div className="messenger__message-list__item">
-                <img src="messenger/message-dummy-3.png" alt="Dummy 3" />
-              </div>
+              {this.state.messages.map(msg =>
+                <div key={msg.id} className="messenger__message-list__item">
+                  <div>
+                    <span>
+                      {msg.user.name}
+                    </span>
+                    <span>
+                      {msg.sentAt}
+                    </span>
+                  </div>
+                  <div>
+                    {msg.text}
+                  </div>
+                </div>,
+              )}
             </div>
           </div>
 
