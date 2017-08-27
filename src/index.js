@@ -3,8 +3,8 @@ import { render } from 'react-dom';
 
 import MessageList from './components/message-list';
 import Members from './components/members';
+import Header from './components/header';
 
-import ArrowIcon from './icons/arrow.svg';
 import SubmitIcon from './icons/submit.svg';
 import SmileyIcon from './icons/smiley.svg';
 
@@ -27,18 +27,7 @@ class Messenger extends React.Component {
     return (
       <div className="messenger">
         <div className="messenger__frame">
-          <header className="messenger__header">
-            <div className="messenger__header__top">
-              <div className="messenger__header__back-icon">
-                <img src={ArrowIcon} alt="back" />
-              </div>
-              <h1 className="messenger__header__group-title">
-                Julia's Groupchate
-              </h1>
-            </div>
-            <small className="messenger__header__bottom">3 People Online</small>
-          </header>
-
+          <Header />
           <Members messages={this.state.messages} userId={this.userId} />
           <MessageList messages={this.state.messages} userId={this.userId} />
 
