@@ -15,6 +15,10 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+      {
+        test: /\.(svg|jpg)$/,
+        loader: 'url-loader',
+      },
     ],
   },
   plugins: [
@@ -25,10 +29,8 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: './src/css', to: 'css/' },
-      { from: './src/icons', to: 'icons/' },
       { from: './src/messenger', to: 'messenger/' },
       { from: './src/sidebar', to: 'sidebar' },
-      { from: './src/users', to: 'users' },
     ]),
   ],
 };
