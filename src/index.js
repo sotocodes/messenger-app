@@ -2,9 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import MessageList from './components/message-list';
+import Members from './components/members';
 
 import ArrowIcon from './icons/arrow.svg';
-import PlusIcon from './icons/plus.svg';
 import SubmitIcon from './icons/submit.svg';
 import SmileyIcon from './icons/smiley.svg';
 
@@ -39,21 +39,7 @@ class Messenger extends React.Component {
             <small className="messenger__header__bottom">3 People Online</small>
           </header>
 
-          <div className="messenger__members">
-            {this.state.messages.map(msg =>
-              <img
-                key={msg.id}
-                src={`./users/${this.userId(msg)}.jpg`}
-                className={`messenger__members__photo messenger__members__photo--${this.userId(
-                  msg,
-                )}`}
-              />,
-            )}
-            <div className="messenger__members__add-member">
-              <img src={PlusIcon} alt="add member" />
-            </div>
-          </div>
-
+          <Members messages={this.state.messages} userId={this.userId} />
           <MessageList messages={this.state.messages} userId={this.userId} />
 
           <div className="messenger__action-bar">
@@ -85,8 +71,6 @@ class Messenger extends React.Component {
   }
 
   sendMessage() {
-    console.log('send message: ', this.inputField.value);
-
     if (this.inputField.value !== '') {
       fetch(
         'https://new.visit-x.net/rest/v1/recruiting/messenger/channel/1234',
