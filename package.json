@@ -1,0 +1,28 @@
+{
+  "name": "http-root",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rimraf public/",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Brahian E. Soto Mercedes <mail@soto.codes> (https://www.soto.codes/)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.1",
+    "babel-preset-env": "1.6.0",
+    "babel-preset-react": "6.24.1",
+    "copy-webpack-plugin": "4.0.1",
+    "html-webpack-plugin": "2.30.1",
+    "rimraf": "2.6.1",
+    "webpack": "3.5.5"
+  },
+  "dependencies": {
+    "react": "15.6.1",
+    "react-dom": "15.6.1"
+  }
+}
