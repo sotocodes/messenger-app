@@ -9,8 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Brahian E. Soto Mercedes <mail@soto.codes> (https://www.soto.codes/)",
-  "license": "ISC",
+  "author": "Brahian E. Soto Mercedes <brahiansoto.me@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-loader": "7.1.1",
